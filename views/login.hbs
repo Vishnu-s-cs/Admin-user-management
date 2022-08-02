@@ -1,0 +1,21 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent" class=" p-5">
+
+   
+    <!-- Login Form -->
+    <form action="/login" method="POST" id="submit-form2">
+    {{#if loginErr}}
+     <p style="color: red;">Invalid username or password</p>
+    {{/if}}
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email..." required pattern="\S(.*\S)?">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" minlength="3" required pattern="\S(.*\S)?">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <p class="text-center text-muted mt-5 mb-0">Haven't an account? <a href="/signup"
+        class="fw-bold text-body"><u>Sign Up here</u></a></p>
+
+
+  </div>
+</div>

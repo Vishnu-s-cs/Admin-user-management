@@ -1,0 +1,100 @@
+
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">{{Name}}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+       
+
+
+        </ul>
+        <li class="nav-item dropdown" style="list-style: none; ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: black;">
+            {{#if user}}
+            Welcome {{user.name}}
+            {{else}}
+            Account
+
+            {{/if}}
+
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if user}}
+            <a class="dropdown-item" href="/logout">Logout</a>
+            {{else}}
+            <a class="dropdown-item" href="/signup">Sign Up</a>
+            <a class="dropdown-item" href="/login">{{Action1}}</a>
+
+            {{/if}}
+            
+          </div>
+
+        </li>
+
+      </div>
+    </nav>
+  </header>
+  {{#if user.admin}}
+    {{#if col1}}
+      {{else}}
+     <a href="/admin" class="p-3">Go to Admin Panel</a>
+    {{/if}}
+    {{#if flag}}
+    <h1 class="pl-5">{{h1}}</h1>
+    <div class="row">
+    <a href="/admin/add-user"class="btn btn-success mt-1 ml-5 mb-5">Add User</a>
+  </div>
+  <div class="tab pl-3" style="
+    width: 96%;
+">
+    <table id="userTable" class="table mt-5 pl-3">
+        <thead>
+            <tr>
+                <th scope="col">{{col1}}</th>
+                <th scope="col">{{col2}}</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <th scope="row">{{this.name}}</th>
+                <td>{{this.email}}</td>
+               
+                <td>
+                    <a href="admin/edit-user?id={{this._id}}" class="btn btn-primary">Edit</a>
+                    <a href="admin/delete-user?id={{this._id}}" class="btn btn-danger" onclick="return confirm('Are you  want to remove {{this.name}}')">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+     </div>
+    {{/if}}
+    {{/if}}
+  <div class="row p-3">
+    {{#each products}}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{this.Image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">{{this.description}}</p>
+          <a href="#" class="btn btn-primary">Buy now</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    
+
+  </div>
+
+
+
